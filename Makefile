@@ -1,6 +1,6 @@
 #! /usr/bin/make
 VERSION_NAME=Principled Opposition to SegWit
-VERSION=$(shell git describe --always --dirty=-modded --abbrev=7)
+VERSION=0.6.3
 
 ifeq ($(VERSION),)
 $(error "ERROR: git is required for generating version information")

@@ -55,6 +55,8 @@ enum output_status {
 	output_state_available= 0,
 	output_state_reserved = 1,
 	output_state_spent = 2,
+	/* Special status used for coin control */
+	output_state_frozen = 128,
 	/* Special status used to express that we don't care in
 	 * queries */
 	output_state_any = 255
@@ -71,6 +73,9 @@ static inline enum output_status output_status_in_db(enum output_status s)
 		return s;
 	case output_state_spent:
 		BUILD_ASSERT(output_state_spent == 2);
+		return s;
+	case output_state_frozen:
+		BUILD_ASSERT(output_state_frozen == 128);
 		return s;
 	/* This one doesn't go into db */
 	case output_state_any:
